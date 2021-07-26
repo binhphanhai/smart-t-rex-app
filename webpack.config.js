@@ -18,7 +18,10 @@ module.exports = {
     clientLogLevel: "silent",
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: "style.css" }),
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css",
+      chunkFilename: "[id].css",
+    }),
     new HtmlWebpackPlugin({
       title: "Caching",
       template: "src/index.html",
@@ -26,6 +29,16 @@ module.exports = {
   ],
   optimization: {
     runtimeChunk: "single",
+    moduleIds: "deterministic",
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all",
+        },
+      },
+    },
   },
   module: {
     rules: [
