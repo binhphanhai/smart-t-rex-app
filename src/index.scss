@@ -15,6 +15,15 @@ body {
   font-weight: bold;
 }
 
+.particles {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
 .form {
   width: 700px;
   background-color: hsl(2, 57%, 40%);
