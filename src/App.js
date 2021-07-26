@@ -1,6 +1,7 @@
 import React from "react";
+import imgSrc from "./assets/background.jpg";
 
-export function App() {
+const App = () => {
   return (
     <div>
       <h1>AAAAAAAAAA cay qua</h1>
@@ -10,6 +11,12 @@ export function App() {
         doloremque, necessitatibus totam consectetur porro sint quam libero
         aperiam? Laborum, quaerat?
       </p>
+      <button type="button" className="btn btn-primary">
+        Primary
+      </button>
+      <img alt="" src={imgSrc} />
     </div>
   );
-}
+};
+
+export default App;
