@@ -1,5 +1,6 @@
 import React from "react";
 import imgSrc from "./assets/background.jpg";
+import { Button } from "react-bootstrap";
 
 const App = () => {
   return (
@@ -11,9 +12,7 @@ const App = () => {
         doloremque, necessitatibus totam consectetur porro sint quam libero
         aperiam? Laborum, quaerat?
       </p>
-      <button type="button" className="btn btn-primary">
-        Primary
-      </button>
+      <Button variant="secondary">acs</Button>
       <img alt="" src={imgSrc} />
     </div>
   );
