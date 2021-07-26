@@ -1,18 +1,78 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  background: #12c2e9; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #f64f59,
-    #c471ed,
-    #12c2e9
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #f64f59,
-    #c471ed,
-    #12c2e9
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: "Courier New", Courier, monospace;
+  background: #12c2e9;
+  background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+}
+
+.Tilt {
+  background: #12c2e9;
+  background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.form {
+  width: 700px;
+  background-color: hsl(2, 57%, 40%);
+  background-image: repeating-linear-gradient(
+      transparent,
+      transparent 50px,
+      rgba(0, 0, 0, 0.4) 50px,
+      rgba(0, 0, 0, 0.4) 53px,
+      transparent 53px,
+      transparent 63px,
+      rgba(0, 0, 0, 0.4) 63px,
+      rgba(0, 0, 0, 0.4) 66px,
+      transparent 66px,
+      transparent 116px,
+      rgba(0, 0, 0, 0.5) 116px,
+      rgba(0, 0, 0, 0.5) 166px,
+      rgba(255, 255, 255, 0.2) 166px,
+      rgba(255, 255, 255, 0.2) 169px,
+      rgba(0, 0, 0, 0.5) 169px,
+      rgba(0, 0, 0, 0.5) 179px,
+      rgba(255, 255, 255, 0.2) 179px,
+      rgba(255, 255, 255, 0.2) 182px,
+      rgba(0, 0, 0, 0.5) 182px,
+      rgba(0, 0, 0, 0.5) 232px,
+      transparent 232px
+    ),
+    repeating-linear-gradient(
+      270deg,
+      transparent,
+      transparent 50px,
+      rgba(0, 0, 0, 0.4) 50px,
+      rgba(0, 0, 0, 0.4) 53px,
+      transparent 53px,
+      transparent 63px,
+      rgba(0, 0, 0, 0.4) 63px,
+      rgba(0, 0, 0, 0.4) 66px,
+      transparent 66px,
+      transparent 116px,
+      rgba(0, 0, 0, 0.5) 116px,
+      rgba(0, 0, 0, 0.5) 166px,
+      rgba(255, 255, 255, 0.2) 166px,
+      rgba(255, 255, 255, 0.2) 169px,
+      rgba(0, 0, 0, 0.5) 169px,
+      rgba(0, 0, 0, 0.5) 179px,
+      rgba(255, 255, 255, 0.2) 179px,
+      rgba(255, 255, 255, 0.2) 182px,
+      rgba(0, 0, 0, 0.5) 182px,
+      rgba(0, 0, 0, 0.5) 232px,
+      transparent 232px
+    ),
+    repeating-linear-gradient(
+      125deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.2) 2px,
+      rgba(0, 0, 0, 0.2) 3px,
+      transparent 3px,
+      transparent 5px,
+      rgba(0, 0, 0, 0.2) 5px
+    );
 }

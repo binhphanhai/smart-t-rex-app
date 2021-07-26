@@ -9,6 +9,7 @@ import ImagesZone from "../components/ImagesZone";
 const Home = () => {
   return (
     <div className="home">
+      {/* <Particles /> */}
       <Navigator />
       <Logo />
       <Info />
