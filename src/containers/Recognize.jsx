@@ -9,7 +9,7 @@ import Info from "../components/Info";
 import InputZone from "../components/InputZone";
 import ImagesZone from "../components/ImagesZone";
 
-const Home = () => {
+const Recognize = () => {
   const [imgUrl, setImgUrl] = useState("");
   const [isPending, setIsPending] = useState(false);
   const [celebrities, setCelebrities] = useState([]);
@@ -81,7 +81,7 @@ const Home = () => {
   }, [imgUrl]);
 
   return (
-    <div className="home">
+    <>
       <Info />
       <InputZone setImgUrl={setImgUrl} />
       {isPending && (
@@ -90,8 +90,8 @@ const Home = () => {
         </div>
       )}
       <ImagesZone imgUrl={imgUrl} celebrities={celebrities} />
-    </div>
+    </>
   );
 };
 
-export default Home;
+export default Recognize;

@@ -46,7 +46,7 @@ const Register = () => {
   };
 
   return (
-    <Container className="h-75 d-flex align-items-center">
+    <Container className="mt-4 d-flex align-items-center">
       <Row className="w-100 d-flex justify-content-center">
         <Col className="col-md-8 col-lg-6 col-xl-4">
           <Card className="form transparent shadow">

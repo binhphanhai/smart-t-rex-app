@@ -9,7 +9,8 @@ import PrivateRoute from "./components/core/PrivateRoute";
 import CommonRoute from "./components/core/CommonRoute";
 
 import Navigator from "./components/Navigation";
-import Home from "./containers/Home";
+import Recognize from "./containers/Recognize";
+import Recogtrie from "./containers/Recogtrie";
 import Login from "./containers/Login";
 import Register from "./containers/Register";
 import NotFound from "./containers/NotFound";
@@ -24,7 +25,8 @@ const App = () => {
           <Switch>
             <CommonRoute exact path="/register" component={Register} />
             <CommonRoute exact path="/login" component={Login} />
-            <PrivateRoute exact path="/" component={Home} />
+            <PrivateRoute exact path="/" component={Recognize} />
+            <PrivateRoute exact path="/recogtrie" component={Recogtrie} />
             <Route component={NotFound} />
           </Switch>
         </HashRouter>
