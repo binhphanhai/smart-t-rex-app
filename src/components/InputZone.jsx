@@ -29,8 +29,8 @@ const InputZone = ({ setImgUrl }) => {
     <div>
       <div>
         <p className="h3 text-center bold">
-          I am Smart T-Rex, I will detect celebrites in your pictures. Git me a
-          try.
+          I am Smart T-Rex, I will detect international celebrites in your
+          pictures. Git me a try.
         </p>
         <div className="d-flex justify-content-center">
           <div className="input-form d-flex justify-content-center p-3 rounded shadow">

@@ -1,21 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 
-const ImagesZone = ({ imgUrl, boundingBox, name, exact }) => {
+const ImagesZone = ({ imgUrl, celebrities }) => {
   const imageRef = useRef(null);
-  const [box, setBox] = useState(null);
-  console.log(box);
-
-  useEffect(() => {
-    if (imageRef.current && boundingBox) {
-      const { width, height } = imageRef.current;
-      setBox({
-        top: boundingBox.topRow * height,
-        right: boundingBox.rightCol * width,
-        bottom: boundingBox.bottomRow * height,
-        left: boundingBox.leftCol * width,
-      });
-    }
-  }, [imageRef.current, boundingBox]);
 
   return (
     <div className="d-flex justify-content-center">
@@ -28,26 +14,29 @@ const ImagesZone = ({ imgUrl, boundingBox, name, exact }) => {
           width="600px"
           heigh="auto"
         />
-        {box && (
-          <div
-            className="bounding-box"
-            style={{
-              top: box.top,
-              right: box.right,
-              bottom: box.bottom,
-              left: box.left,
-            }}
-          >
-            <div className="bounding-box-concepts">
-              <div className="bounding-box__concept">
-                <div className="concept__name">{name}</div>
-                <div className="concept__prediction-val">
-                  {Math.floor(exact * 10000) / 100}%
+        {imageRef.current !== null &&
+          celebrities.length > 0 &&
+          celebrities.map((celeb) => (
+            <div
+              key={celeb.id}
+              className="bounding-box"
+              style={{
+                top: celeb.boundingBox.topRow * imageRef.current.height,
+                right: celeb.boundingBox.rightCol * imageRef.current.width,
+                bottom: celeb.boundingBox.bottomRow * imageRef.current.height,
+                left: celeb.boundingBox.leftCol * imageRef.current.width,
+              }}
+            >
+              <div className="bounding-box-concepts">
+                <div className="bounding-box__concept">
+                  <div className="concept__name">{celeb.name}</div>
+                  <div className="concept__prediction-val">
+                    {Math.floor(celeb.exact * 10000) / 100}%
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          ))}
       </div>
     </div>
   );

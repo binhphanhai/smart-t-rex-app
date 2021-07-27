@@ -18,6 +18,7 @@ const Home = () => {
   useEffect(() => {
     if (imgUrl) {
       setIsPending(true);
+      setCelebrities([]);
       detectImage(imgUrl)
         .then((res) => {
           setIsPending(false);
@@ -46,7 +47,7 @@ const Home = () => {
           <Spinner animation="grow" variant="primary" />
         </div>
       )}
-      <ImagesZone imgUrl={imgUrl} {...celebrities[0]} />
+      <ImagesZone imgUrl={imgUrl} celebrities={celebrities} />
     </div>
   );
 };
