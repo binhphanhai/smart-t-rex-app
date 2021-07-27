@@ -1,32 +1,44 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useLogOut } from "../utils/userProvider";
 import { useGetUser } from "../utils/userProvider";
 
 import Logo from "./Logo";
 
 const Navigation = () => {
+  const location = useLocation();
+  const path = location.pathname;
   const logout = useLogOut();
   const user = useGetUser();
   return (
     <div className="d-flex justify-content-between">
-      <div className="d-flex justify-content-start mt-3">
+      <div className="d-flex justify-content-start mt-3 align-items-start">
         <Logo />
         {user?.id && (
           <>
-            <Link className="h3 text-dark m-2 p-3 bold" to="/">
+            <Link
+              className={`h3 m-2 p-3 bold shadow rounded ${
+                path === "/" && "active"
+              }`}
+              to="/"
+            >
               Recognize
             </Link>
-            <Link className="h3 text-dark m-2 p-3 bold" to="/recogtrie">
+            <Link
+              className={`h3 m-2 p-3 bold shadow rounded ${
+                path === "/recogtrie" && "active"
+              }`}
+              to="/recogtrie"
+            >
               Recogtrie
             </Link>
           </>
         )}
       </div>
-      <div className="d-flex justify-content-end">
+      <div className="d-flex justify-content-end align-items-start">
         {user?.id ? (
           <Link
-            className="h3 text-dark m-2 p-3 bold"
+            className="h3 m-2 p-3 bold shadow rounded"
             to="/login"
             onClick={() => logout()}
           >
@@ -34,10 +46,20 @@ const Navigation = () => {
           </Link>
         ) : (
           <>
-            <Link className="h3 text-dark m-2 p-3 bold" to="/login">
+            <Link
+              className={`h3 m-2 p-3 bold shadow rounded ${
+                path === "/login" && "active"
+              }`}
+              to="/login"
+            >
               Log In
             </Link>
-            <Link className="h3 text-dark m-2 p-3 bold" to="/register">
+            <Link
+              className={`h3 m-2 p-3 bold shadow rounded ${
+                path === "/register" && "active"
+              }`}
+              to="/register"
+            >
               Register
             </Link>{" "}
           </>

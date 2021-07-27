@@ -6,7 +6,7 @@ const Info = () => {
   return (
     <div>
       <div className="text-white text-center h3">
-        {`${user.name}, your current entry count is...`}
+        {`Hi ${user.name}, your current entry count is...`}
       </div>
       <div className="text-white text-center h1">{user.entries}</div>
     </div>
