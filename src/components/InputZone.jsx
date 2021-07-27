@@ -18,7 +18,7 @@ const InputZone = ({ setImgUrl }) => {
     } else {
       Swal.fire({
         icon: "error",
-        title: "Detect failed",
+        title: "Recognize failed",
         text: "Please input image URL containing image's format",
       });
       setInputValue("");
@@ -29,7 +29,7 @@ const InputZone = ({ setImgUrl }) => {
     <div>
       <div>
         <p className="h3 text-center bold">
-          I am Smart T-Rex, I will detect international celebrites in your
+          I am Smart T-Rex, I will recognize international celebrites in your
           pictures. Git me a try.
         </p>
         <div className="d-flex justify-content-center">
@@ -45,7 +45,7 @@ const InputZone = ({ setImgUrl }) => {
               className="w-25 h3 btn btn-info bold"
               onClick={handleSubmitImage}
             >
-              DETECT
+              Recognize
             </button>
           </div>
         </div>

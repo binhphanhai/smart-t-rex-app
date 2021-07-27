@@ -31,7 +31,7 @@ const ImagesZone = ({ imgUrl, celebrities }) => {
                 <div className="bounding-box__concept">
                   <div className="concept__name">{celeb.name}</div>
                   <div className="concept__prediction-val">
-                    {Math.floor(celeb.exact * 10000) / 100}%
+                    {Math.floor(celeb.prediction * 10000) / 100}%
                   </div>
                 </div>
               </div>

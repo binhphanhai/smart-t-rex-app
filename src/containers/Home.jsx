@@ -3,9 +3,8 @@ import { Spinner } from "react-bootstrap";
 import Swal from "sweetalert2";
 
 import { useGetUser, useSetUser } from "../utils/userProvider";
-import { detectImage, addImage, increaseEntry } from "../utils/services";
+import { recognizeImage, addImage, increaseEntry } from "../utils/services";
 
-import Logo from "../components/Logo";
 import Info from "../components/Info";
 import InputZone from "../components/InputZone";
 import ImagesZone from "../components/ImagesZone";
@@ -58,12 +57,12 @@ const Home = () => {
     if (imgUrl) {
       setIsPending(true);
       setCelebrities([]);
-      detectImage(imgUrl)
+      recognizeImage(imgUrl)
         .then((res) => {
           setIsPending(false);
           setCelebrities(res.data);
           const celebNames = res.data
-            .filter((celeb) => celeb.exact > 0.1)
+            .filter((celeb) => celeb.prediction > 0.1)
             .map((celeb) => celeb.name);
           celebNames.length > 0 && handleAddImage(celebNames);
           handleIncreaseEntry();
@@ -72,7 +71,7 @@ const Home = () => {
           setIsPending(false);
           Swal.fire({
             icon: "error",
-            title: "Predict failed",
+            title: "Recognize failed",
             text: err.response?.data.detail
               ? err.response.data.detail
               : "Something went wrong!",
@@ -83,7 +82,6 @@ const Home = () => {
 
   return (
     <div className="home">
-      <Logo />
       <Info />
       <InputZone setImgUrl={setImgUrl} />
       {isPending && (
