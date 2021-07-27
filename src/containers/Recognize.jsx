@@ -6,8 +6,8 @@ import { useGetUser, useSetUser } from "../utils/userProvider";
 import { recognizeImage, addImage, increaseEntry } from "../utils/services";
 
 import Info from "../components/Info";
-import InputZone from "../components/InputZone";
-import ImagesZone from "../components/ImagesZone";
+import InputZone from "../components/recognize/InputZone";
+import ImagesZone from "../components/recognize/ImagesZone";
 
 const Recognize = () => {
   const [imgUrl, setImgUrl] = useState("");

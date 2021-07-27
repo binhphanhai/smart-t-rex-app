@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import { MAX_SUPPORTED_IMAGE_URL_LENGTH } from "../utils/enum";
+import { MAX_SUPPORTED_IMAGE_URL_LENGTH } from "../../utils/enum";
 
 const InputZone = ({ setImgUrl }) => {
   const [inputValue, setInputValue] = useState("");
