@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { useGetUser } from "../utils/userProvider";
+import { useGetUser } from "../../utils/userProvider";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const user = useGetUser();

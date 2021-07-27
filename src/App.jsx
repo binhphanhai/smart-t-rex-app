@@ -5,8 +5,8 @@ import Particles from "react-tsparticles";
 import { particlesOptions } from "./utils/enum";
 import UserProvider from "./utils/userProvider";
 
-import PrivateRoute from "./components/PrivateRoute";
-import CommonRoute from "./components/CommonRoute";
+import PrivateRoute from "./components/core/PrivateRoute";
+import CommonRoute from "./components/core/CommonRoute";
 
 import Navigator from "./components/Navigation";
 import Home from "./containers/Home";

@@ -1,12 +1,14 @@
 import React from "react";
+import { useGetUser } from "../utils/userProvider";
 
 const Info = () => {
+  const user = useGetUser();
   return (
     <div>
       <div className="text-white text-center h3">
-        {`${"binh"}, your current entry count is...`}
+        {`${user.name}, your current entry count is...`}
       </div>
-      <div className="text-white text-center h1">{3}</div>
+      <div className="text-white text-center h1">{user.entries}</div>
     </div>
   );
 };
