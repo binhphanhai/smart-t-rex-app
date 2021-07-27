@@ -8,6 +8,7 @@ import UserProvider from "./utils/userProvider";
 import PrivateRoute from "./components/PrivateRoute";
 import CommonRoute from "./components/CommonRoute";
 
+import Navigator from "./components/Navigation";
 import Home from "./containers/Home";
 import Login from "./containers/Login";
 import Register from "./containers/Register";
@@ -19,6 +20,7 @@ const App = () => {
       <Particles className="particles" options={particlesOptions} />
       <UserProvider>
         <HashRouter>
+          <Navigator />
           <Switch>
             <CommonRoute exact path="/register" component={Register} />
             <CommonRoute exact path="/login" component={Login} />

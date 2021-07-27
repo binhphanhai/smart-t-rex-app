@@ -7,3 +7,6 @@ const instance = axios.create({
 
 export const login = (email, password) =>
   instance.post("/login", { email, password });
+
+export const register = (email, name, password) =>
+  instance.post("/register", { email, name, password });
