@@ -13,13 +13,13 @@ const InputZone = ({ setImgUrl }) => {
         text: `Please input other image URL, maximun supported length is ${MAX_SUPPORTED_IMAGE_URL_LENGTH}`,
       });
       setInputValue("");
-    } else if (inputValue.match(/\.(jpeg|jpg|gif|png)/)) {
+    } else if (inputValue.match(/(\.|\=)(jpeg|jpg|gif|png)/)) {
       setImgUrl(inputValue);
     } else {
       Swal.fire({
         icon: "error",
         title: "Detect failed",
-        text: "This is not an image URL, please check again",
+        text: "Please input image URL containing image's format",
       });
       setInputValue("");
     }
@@ -38,6 +38,7 @@ const InputZone = ({ setImgUrl }) => {
               className="h4 p-2 w-75 d-flex justify-content-center"
               type="text"
               value={inputValue}
+              placeholder="Input Image URL"
               onChange={(e) => setInputValue(e.target.value)}
             />
             <button
