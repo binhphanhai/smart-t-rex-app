@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Form, Button, Card, Container, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+
+import { login } from "../utils/services";
 
 const Login = () => {
   const {
@@ -10,7 +13,15 @@ const Login = () => {
   } = useForm();
 
   const onLogin = (data) => {
-    console.log(data);
+    login(data.email, data.password)
+      .then((res) => console.log(res))
+      .catch((err) =>
+        Swal.fire({
+          icon: "error",
+          title: "Login failed",
+          text: "Something went wrong!",
+        })
+      );
   };
   return (
     <Container className="h-75 d-flex align-items-center">
