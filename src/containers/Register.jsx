@@ -27,7 +27,7 @@ const Register = () => {
 
   const onRegister = (data) => {
     setIsPending(true);
-    registerUser(data.email, data.name.toC, data.password)
+    registerUser(data.email, data.name, data.password)
       .then((res) => {
         setIsPending(false);
         setUser(res.data);
@@ -89,6 +89,10 @@ const Register = () => {
                   <Form.Control
                     {...register("password", {
                       required: "Input password to continue",
+                      minLength: {
+                        value: 8,
+                        message: "Password must be at least 8 characters",
+                      },
                     })}
                     type="password"
                     placeholder="Password"
