@@ -9,7 +9,7 @@ const InputZone = () => {
           try.
         </p>
         <div className="d-flex justify-content-center">
-          <div className="form d-flex justify-content-center p-3 rounded shadow">
+          <div className="input-form d-flex justify-content-center p-3 rounded shadow">
             <input
               className="h4 p-2 w-75 d-flex justify-content-center"
               type="text"
