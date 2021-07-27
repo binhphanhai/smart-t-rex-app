@@ -1,27 +1,46 @@
 import React, { useState } from "react";
-import { Form, Button, Card, Container, Row, Col } from "react-bootstrap";
+import { useHistory } from "react-router";
+import {
+  Form,
+  Button,
+  Card,
+  Container,
+  Row,
+  Col,
+  Spinner,
+} from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 import { login } from "../utils/services";
+import { useSetUser } from "../utils/userProvider";
 
 const Login = () => {
+  const setUser = useSetUser();
+  const history = useHistory();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [isPending, setIsPending] = useState(false);
 
   const onLogin = (data) => {
+    setIsPending(true);
     login(data.email, data.password)
-      .then((res) => console.log(res))
-      .catch((err) =>
+      .then((res) => {
+        setIsPending(false);
+        setUser(res.data);
+        history.push("/");
+      })
+      .catch((err) => {
+        setIsPending(false);
         Swal.fire({
           icon: "error",
           title: "Login failed",
           text: "Something went wrong!",
-        })
-      );
+        });
+      });
   };
   return (
     <Container className="h-75 d-flex align-items-center">
@@ -62,7 +81,11 @@ const Login = () => {
                     {errors.password ? errors.password.message : ""}
                   </small>
                 </Form.Group>
-
+                {isPending && (
+                  <div className="d-flex justify-content-center mb-3">
+                    <Spinner animation="border" variant="primary" />
+                  </div>
+                )}
                 <Button className="w-100" variant="primary" type="submit">
                   Login
                 </Button>
