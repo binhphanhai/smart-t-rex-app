@@ -45,6 +45,50 @@ body {
   text-transform: uppercase;
 }
 
+.absolute {
+  position: absolute;
+}
+
+.bounding-box {
+  position: absolute;
+  box-shadow: 0 0 0 3px #149df2 inset;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  cursor: pointer;
+
+  .bounding-box-concepts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+
+    .bounding-box__concept {
+      background: #149df2;
+      color: #fff;
+      white-space: nowrap;
+      font-size: 0.75rem;
+      line-height: 0.75rem;
+      display: flex;
+      align-items: baseline;
+      font-weight: 700;
+      padding: 1px 3px;
+      border-radius: 2px 2px 0 0;
+
+      .concept__name {
+        text-transform: capitalize;
+        color: #fff;
+      }
+
+      .concept__prediction-val {
+        color: #fff;
+        font-size: 0.625rem;
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}
+
 .input-form {
   width: 700px;
   background-color: hsl(2, 57%, 40%);

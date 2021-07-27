@@ -10,3 +10,5 @@ export const login = (email, password) =>
 
 export const register = (email, name, password) =>
   instance.post("/register", { email, name, password });
+
+export const detectImage = (url) => instance.post("/image/predict", { url });

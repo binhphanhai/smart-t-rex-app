@@ -1,3 +1,5 @@
+export const MAX_SUPPORTED_IMAGE_URL_LENGTH = 500;
+
 export const particlesOptions = {
   fpsLimit: 60,
   particles: {

@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import { MAX_SUPPORTED_IMAGE_URL_LENGTH } from "../utils/enum";
 
 const InputZone = ({ setImgUrl }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleSubmitImage = () => {
-    if (inputValue.match(/\.(jpeg|jpg|gif|png)$/)) setImgUrl(inputValue);
-    else {
+    if (inputValue.length > MAX_SUPPORTED_IMAGE_URL_LENGTH) {
+      Swal.fire({
+        icon: "error",
+        title: "Image URL is too long",
+        text: `Please input other image URL, maximun supported length is ${MAX_SUPPORTED_IMAGE_URL_LENGTH}`,
+      });
+      setInputValue("");
+    } else if (inputValue.match(/\.(jpeg|jpg|gif|png)/)) {
+      setImgUrl(inputValue);
+    } else {
       Swal.fire({
         icon: "error",
         title: "Detect failed",
