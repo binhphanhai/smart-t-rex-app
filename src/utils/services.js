@@ -19,3 +19,8 @@ export const recognizeImage = (url) =>
 
 export const addImage = (url, celebs) =>
   instance.post("/image", { url, celebs });
+
+export const getAllCelebrities = () => instance.get("/image/getAllCelebrities");
+
+export const loadImagesByCelebrity = (celeb, top = 100) =>
+  instance.post("/image/getImagesByCelebrity", { celeb, top });
