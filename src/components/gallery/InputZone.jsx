@@ -41,7 +41,7 @@ const InputZone = ({ celebrities, setName, isLoading }) => {
           I will show all submitted images containing that celebrity
         </p>
         <div className="d-flex justify-content-center">
-          <div className="input-form input-recogtrie rounded shadow row justify-content-center">
+          <div className="input-form input-gallery rounded shadow row justify-content-center">
             <Select
               className="col-12 col-md-9 mt-2"
               value={selectedOption}

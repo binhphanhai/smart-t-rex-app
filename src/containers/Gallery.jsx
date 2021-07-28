@@ -3,12 +3,12 @@ import Swal from "sweetalert2";
 import { Spinner, Container } from "react-bootstrap";
 
 import Info from "../components/Info";
-import InputZone from "../components/recogtrie/InputZone";
-import ImagesGrid from "../components/recogtrie/ImagesGrid";
+import InputZone from "../components/gallery/InputZone";
+import ImagesGrid from "../components/gallery/ImagesGrid";
 
 import { getAllCelebrities, loadImagesByCelebrity } from "../utils/services";
 
-const Recogtrie = () => {
+const Gallery = () => {
   const [celebrities, setCelebrities] = useState([]);
   const [isLoadingCelebrities, setIsLoadingCelebrities] = useState(false);
   const [imageUrls, setImageUrls] = useState([]);
@@ -72,4 +72,4 @@ const Recogtrie = () => {
   );
 };
 
-export default Recogtrie;
+export default Gallery;

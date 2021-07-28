@@ -12,7 +12,7 @@ import CommonRoute from "./components/core/CommonRoute";
 import Logo from "./components/Logo";
 import Navigator from "./components/Navigation";
 import Recognize from "./containers/Recognize";
-import Recogtrie from "./containers/Recogtrie";
+import Gallery from "./containers/Gallery";
 import Login from "./containers/Login";
 import Register from "./containers/Register";
 import NotFound from "./containers/NotFound";
@@ -32,7 +32,7 @@ const App = () => {
               <CommonRoute exact path="/register" component={Register} />
               <CommonRoute exact path="/login" component={Login} />
               <PrivateRoute exact path="/" component={Recognize} />
-              <PrivateRoute exact path="/recogtrie" component={Recogtrie} />
+              <PrivateRoute exact path="/gallery" component={Gallery} />
               <Route component={NotFound} />
             </Switch>
           </div>

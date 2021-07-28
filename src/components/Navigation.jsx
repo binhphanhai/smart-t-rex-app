@@ -23,10 +23,10 @@ const Navigation = () => {
                   Recognize
                 </Link>
                 <Link
-                  className={`nav-link ${path === "/recogtrie" && "active"}`}
-                  to="/recogtrie"
+                  className={`nav-link ${path === "/gallery" && "active"}`}
+                  to="/gallery"
                 >
-                  Recogtrie
+                  Gallery
                 </Link>
               </Nav>
               <Nav>
