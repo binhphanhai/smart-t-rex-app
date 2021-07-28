@@ -43,10 +43,10 @@ const InputZone = ({ setImgUrl }) => {
               onChange={(e) => setInputValue(e.target.value)}
             />
             <button
-              className="col-6 col-md-3 h3 btn btn-info bold mt-2"
+              className="col-6 col-md-3 h3 btn btn-info mt-2"
               onClick={handleSubmitImage}
             >
-              Recognize
+              <span className="h5 bold">Recognize</span>
             </button>
           </div>
         </div>

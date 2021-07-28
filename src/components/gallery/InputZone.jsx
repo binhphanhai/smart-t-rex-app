@@ -51,10 +51,10 @@ const InputZone = ({ celebrities, setName, isLoading }) => {
               isLoading={isLoading}
             />
             <button
-              className="col-6 col-md-3 h3 btn btn-info bold mt-2"
+              className="col-6 col-md-3 h3 btn btn-info mt-2"
               onClick={handleSetName}
             >
-              Get images
+              <span className="h5 bold"> Get images</span>
             </button>
           </div>
         </div>
