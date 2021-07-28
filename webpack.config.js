@@ -25,6 +25,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Caching",
       template: "src/index.html",
+      favicon: "./src/assets/favicon.png",
     }),
   ],
   optimization: {
