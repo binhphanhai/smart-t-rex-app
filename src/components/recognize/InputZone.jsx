@@ -34,16 +34,16 @@ const InputZone = ({ setImgUrl }) => {
         </p>
         <p className="h3 text-center bold">Git me a try.</p>
         <div className="d-flex justify-content-center">
-          <div className="input-form input-recognize d-flex justify-content-center p-3 rounded shadow">
+          <div className="input-form input-recognize rounded shadow row justify-content-center">
             <input
-              className="h6 p-2 w-75"
+              className="col-12 col-md-9 mt-2 mb-2"
               type="text"
               value={inputValue}
               placeholder="Input Image URL"
               onChange={(e) => setInputValue(e.target.value)}
             />
             <button
-              className="w-25 h3 btn btn-info bold"
+              className="col-6 col-md-3 h3 btn btn-info bold mt-2"
               onClick={handleSubmitImage}
             >
               Recognize
