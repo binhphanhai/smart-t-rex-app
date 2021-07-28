@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 
 import { useGetUser, useSetUser } from "../utils/userProvider";
 import { recognizeImage, addImage, increaseEntry } from "../utils/services";
+import { removeDuplicates } from "../utils/helpers";
 
 import Info from "../components/Info";
 import InputZone from "../components/recognize/InputZone";
@@ -64,7 +65,8 @@ const Recognize = () => {
           const celebNames = res.data
             .filter((celeb) => celeb.prediction > 0.1)
             .map((celeb) => celeb.name);
-          if (celebNames.length > 0) handleAddImage(celebNames);
+          if (celebNames.length > 0)
+            handleAddImage(removeDuplicates(celebNames));
           else
             Swal.fire({
               icon: "info",
