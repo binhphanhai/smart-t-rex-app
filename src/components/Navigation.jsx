@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 import { useLogOut } from "../utils/userProvider";
@@ -18,36 +19,36 @@ const Navigation = () => {
           {user?.id ? (
             <>
               <Nav className="me-auto">
-                <Nav.Link className={path === "/" ? "active" : ""} href="#/">
+                <Link className={`nav-link ${path === "/" && "active"}`} to="/">
                   Recognize
-                </Nav.Link>
-                <Nav.Link
-                  className={path === "/recogtrie" ? "active" : ""}
-                  href="#/recogtrie"
+                </Link>
+                <Link
+                  className={`nav-link ${path === "/recogtrie" && "active"}`}
+                  to="/recogtrie"
                 >
                   Recogtrie
-                </Nav.Link>
+                </Link>
               </Nav>
               <Nav>
-                <Nav.Link href="#/login" onClick={() => logout()}>
+                <Link className="nav-link" to="/login" onClick={() => logout()}>
                   Log Out
-                </Nav.Link>
+                </Link>
               </Nav>
             </>
           ) : (
             <Nav>
-              <Nav.Link
-                className={path === "/login" ? "active" : ""}
-                href="#/login"
+              <Link
+                className={`nav-link ${path === "/login" && "active"}`}
+                to="/login"
               >
                 Log In
-              </Nav.Link>
-              <Nav.Link
-                className={path === "/register" ? "active" : ""}
-                href="#/register"
+              </Link>
+              <Link
+                className={`nav-link ${path === "/register" && "active"}`}
+                to="/register"
               >
                 Register
-              </Nav.Link>
+              </Link>
             </Nav>
           )}
         </Navbar.Collapse>
