@@ -29,10 +29,14 @@ const ImagesZone = ({ imgUrl, celebrities }) => {
             >
               <div className="bounding-box-concepts">
                 <div className="bounding-box__concept">
-                  <div className="concept__name">{celeb.name}</div>
-                  <div className="concept__prediction-val">
-                    {Math.floor(celeb.prediction * 10000) / 100}%
+                  <div className="concept__name">
+                    {celeb.prediction > 0.1 ? celeb.name : "Unknown"}
                   </div>
+                  {celeb.prediction > 0.1 && (
+                    <div className="concept__prediction-val">
+                      {Math.floor(celeb.prediction * 10000) / 100}%
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

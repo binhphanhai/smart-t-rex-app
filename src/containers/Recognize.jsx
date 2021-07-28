@@ -64,7 +64,13 @@ const Recognize = () => {
           const celebNames = res.data
             .filter((celeb) => celeb.prediction > 0.1)
             .map((celeb) => celeb.name);
-          celebNames.length > 0 && handleAddImage(celebNames);
+          if (celebNames.length > 0) handleAddImage(celebNames);
+          else
+            Swal.fire({
+              icon: "info",
+              title: "Pridiction is too low",
+              text: "I will not add this image to gallery",
+            });
           handleIncreaseEntry();
         })
         .catch((err) => {
