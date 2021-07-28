@@ -28,6 +28,12 @@ const Navigation = () => {
                 >
                   Gallery
                 </Link>
+                <Link
+                  className={`nav-link ${path === "/ranking" && "active"}`}
+                  to="/ranking"
+                >
+                  Ranking
+                </Link>
               </Nav>
               <Nav>
                 <Link className="nav-link" to="/login" onClick={() => logout()}>

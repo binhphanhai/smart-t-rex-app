@@ -24,3 +24,6 @@ export const getAllCelebrities = () => instance.get("/image/getAllCelebrities");
 
 export const loadImagesByCelebrity = (celeb, top = 100) =>
   instance.post("/image/getImagesByCelebrity", { celeb, top });
+
+export const getImageCountByCelebrity = () =>
+  instance.get("/image/getImageCountByCelebrity");

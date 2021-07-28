@@ -57,6 +57,20 @@ body {
   position: absolute;
 }
 
+table.ranking-table {
+  font-size: 1.25rem;
+  thead {
+    th {
+      text-transform: uppercase;
+    }
+  }
+  tbody {
+    td {
+      text-transform: capitalize;
+    }
+  }
+}
+
 .bounding-box {
   position: absolute;
   box-shadow: 0 0 0 3px #149df2 inset;

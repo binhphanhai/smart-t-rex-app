@@ -13,6 +13,7 @@ import Logo from "./components/Logo";
 import Navigator from "./components/Navigation";
 import Recognize from "./containers/Recognize";
 import Gallery from "./containers/Gallery";
+import Ranking from "./containers/ranking";
 import Login from "./containers/Login";
 import Register from "./containers/Register";
 import NotFound from "./containers/NotFound";
@@ -33,6 +34,7 @@ const App = () => {
               <CommonRoute exact path="/login" component={Login} />
               <PrivateRoute exact path="/" component={Recognize} />
               <PrivateRoute exact path="/gallery" component={Gallery} />
+              <PrivateRoute exact path="/ranking" component={Ranking} />
               <Route component={NotFound} />
             </Switch>
           </div>
