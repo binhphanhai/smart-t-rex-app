@@ -30,8 +30,9 @@ const InputZone = ({ setImgUrl }) => {
       <div>
         <p className="h3 text-center bold">
           I am Smart T-Rex, I will recognize international celebrites in your
-          images. Git me a try.
+          images.
         </p>
+        <p className="h3 text-center bold">Git me a try.</p>
         <div className="d-flex justify-content-center">
           <div className="input-form input-recognize d-flex justify-content-center p-3 rounded shadow">
             <input

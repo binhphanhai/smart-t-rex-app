@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import Swal from "sweetalert2";
 import Select from "react-select";
 
 import { capitalizeString } from "../../utils/helpers";
 
-const InputZone = ({ celebrities, setName }) => {
+const InputZone = ({ celebrities, setName, isLoading }) => {
   const [options, setOptions] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -13,7 +14,12 @@ const InputZone = ({ celebrities, setName }) => {
 
   const handleSetName = () => {
     if (selectedOption) setName(selectedOption.value);
-    else console.log("erradadad");
+    else
+      Swal.fire({
+        icon: "error",
+        title: "Invalid celebrity",
+        text: "Please select celebrity",
+      });
   };
 
   useEffect(() => {
@@ -29,8 +35,10 @@ const InputZone = ({ celebrities, setName }) => {
     <div>
       <div>
         <p className="h3 text-center bold">
-          I am Smart T-Rex, select recognized celebrity, I will show all
-          submitted images containing that celebrity
+          I am Smart T-Rex, please select recognized celebrity,
+        </p>
+        <p className="h3 text-center bold">
+          I will show all submitted images containing that celebrity
         </p>
         <div className="d-flex justify-content-center">
           <div className="input-form input-recogtrie d-flex justify-content-center p-3 rounded shadow">
@@ -40,6 +48,7 @@ const InputZone = ({ celebrities, setName }) => {
               onChange={handleChange}
               options={options}
               placeholder="Choose recognized celebrity"
+              isLoading={isLoading}
             />
             <button
               className="w-25 h3 btn btn-info bold"

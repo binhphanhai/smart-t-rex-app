@@ -24,7 +24,7 @@ const App = () => {
       <HashRouter>
         <UserProvider>
           <Navigator />
-          <Container>
+          <Container className="main-container">
             <Logo />
             <Switch>
               <CommonRoute exact path="/register" component={Register} />

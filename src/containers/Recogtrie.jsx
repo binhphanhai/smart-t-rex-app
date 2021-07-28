@@ -7,6 +7,7 @@ import { getAllCelebrities, loadImagesByCelebrity } from "../utils/services";
 
 const Recogtrie = () => {
   const [celebrities, setCelebrities] = useState([]);
+  const [isLoadingCelebrities, setIsLoadingCelebrities] = useState(false);
 
   const handleLoadImages = (name) => {
     loadImagesByCelebrity(name)
@@ -15,17 +16,25 @@ const Recogtrie = () => {
   };
 
   useEffect(() => {
+    setIsLoadingCelebrities(true);
     getAllCelebrities()
       .then((res) => {
+        setIsLoadingCelebrities(false);
         setCelebrities(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setIsLoadingCelebrities(false);
+      });
   }, []);
 
   return (
     <>
       <Info />
-      <InputZone celebrities={celebrities} setName={handleLoadImages} />
+      <InputZone
+        celebrities={celebrities}
+        isLoading={isLoadingCelebrities}
+        setName={handleLoadImages}
+      />
     </>
   );
 };

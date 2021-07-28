@@ -10,7 +10,7 @@ const Navigation = () => {
   const logout = useLogOut();
   const user = useGetUser();
   return (
-    <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
+    <Navbar collapseOnSelect fixed="top" expand="sm" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand href="#/">Smart T-Rex</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
