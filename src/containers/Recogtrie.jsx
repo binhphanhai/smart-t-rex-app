@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Container } from "react-bootstrap";
 
 import Info from "../components/Info";
 import InputZone from "../components/recogtrie/InputZone";
@@ -54,17 +54,19 @@ const Recogtrie = () => {
 
   return (
     <>
-      <Info />
-      <InputZone
-        celebrities={celebrities}
-        isLoading={isLoadingCelebrities}
-        setName={handleLoadImages}
-      />
-      {isLoadingImageUrls && (
-        <div className="d-flex justify-content-center m-3">
-          <Spinner animation="border" variant="primary" />
-        </div>
-      )}
+      <Container>
+        <Info />
+        <InputZone
+          celebrities={celebrities}
+          isLoading={isLoadingCelebrities}
+          setName={handleLoadImages}
+        />
+        {isLoadingImageUrls && (
+          <div className="d-flex justify-content-center m-3">
+            <Spinner animation="border" variant="primary" />
+          </div>
+        )}
+      </Container>
       <ImagesGrid imageUrls={imageUrls} />
     </>
   );

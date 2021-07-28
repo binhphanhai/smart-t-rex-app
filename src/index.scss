@@ -57,10 +57,6 @@ body {
   position: absolute;
 }
 
-.images-grid {
-  background: rgba(2, 2, 31, 0.2);
-}
-
 .bounding-box {
   position: absolute;
   box-shadow: 0 0 0 3px #149df2 inset;
@@ -99,6 +95,27 @@ body {
       }
     }
   }
+}
+
+img.gallery-item {
+  width: 100%;
+}
+
+.my-masonry-grid {
+  display: flex;
+  justify-content: center;
+  margin-right: 10px;
+  margin-top: 20px;
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 10px;
+  background-clip: padding-box;
+}
+
+.my-masonry-grid_column > div {
+  background: grey;
+  margin-bottom: 10px;
 }
 
 .input-form {

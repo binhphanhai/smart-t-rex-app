@@ -1,19 +1,25 @@
 import React from "react";
+import Masonry from "react-masonry-css";
 
 const ImagesGrid = ({ imageUrls }) => {
   return (
-    <div className="images-grid rounded d-flex flex-wrap align-items-start align-content">
+    <Masonry
+      breakpointCols={{
+        default: 5,
+        1800: 4,
+        1300: 3,
+        900: 2,
+        500: 1,
+      }}
+      className="my-masonry-grid"
+      columnClassName="my-masonry-grid_column"
+    >
       {imageUrls.map((src) => (
-        <img
-          key={src}
-          className="rounded m-2"
-          alt=""
-          src={src}
-          width="300px"
-          height="auto"
-        />
+        <div key={src}>
+          <img className="gallery-item rounded" alt="" src={src} />
+        </div>
       ))}
-    </div>
+    </Masonry>
   );
 };
 

@@ -24,8 +24,10 @@ const App = () => {
       <HashRouter>
         <UserProvider>
           <Navigator />
-          <Container className="main-container">
-            <Logo />
+          <div className="main-container">
+            <Container>
+              <Logo />
+            </Container>
             <Switch>
               <CommonRoute exact path="/register" component={Register} />
               <CommonRoute exact path="/login" component={Login} />
@@ -33,7 +35,7 @@ const App = () => {
               <PrivateRoute exact path="/recogtrie" component={Recogtrie} />
               <Route component={NotFound} />
             </Switch>
-          </Container>
+          </div>
         </UserProvider>
       </HashRouter>
     </>

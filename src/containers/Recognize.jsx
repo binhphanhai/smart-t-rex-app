@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Container } from "react-bootstrap";
 import Swal from "sweetalert2";
 
 import { useGetUser, useSetUser } from "../utils/userProvider";
@@ -87,7 +87,7 @@ const Recognize = () => {
   }, [imgUrl]);
 
   return (
-    <>
+    <Container>
       <Info />
       <InputZone setImgUrl={setImgUrl} />
       {isPending && (
@@ -96,7 +96,7 @@ const Recognize = () => {
         </div>
       )}
       <ImagesZone imgUrl={imgUrl} celebrities={celebrities} />
-    </>
+    </Container>
   );
 };
 
