@@ -5,7 +5,7 @@ import logo from "../assets/logo.png";
 
 const Logo = () => {
   return (
-    <div className="m-4 mt-0">
+    <div className="m-4 mt-3">
       <Tilt
         className="Tilt rounded shadow"
         options={{ max: 50 }}

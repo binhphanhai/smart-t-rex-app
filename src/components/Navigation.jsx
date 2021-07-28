@@ -1,71 +1,58 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Navbar, Nav, Container } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
+
 import { useLogOut } from "../utils/userProvider";
 import { useGetUser } from "../utils/userProvider";
 
-import Logo from "./Logo";
-
 const Navigation = () => {
-  const location = useLocation();
-  const path = location.pathname;
+  const path = useLocation().pathname;
   const logout = useLogOut();
   const user = useGetUser();
   return (
-    <div className="d-flex justify-content-between">
-      <div className="d-flex justify-content-start mt-3 align-items-start">
-        <Logo />
-        {user?.id && (
-          <>
-            <Link
-              className={`h3 m-2 p-3 bold shadow rounded ${
-                path === "/" && "active"
-              }`}
-              to="/"
-            >
-              Recognize
-            </Link>
-            <Link
-              className={`h3 m-2 p-3 bold shadow rounded ${
-                path === "/recogtrie" && "active"
-              }`}
-              to="/recogtrie"
-            >
-              Recogtrie
-            </Link>
-          </>
-        )}
-      </div>
-      <div className="d-flex justify-content-end align-items-start">
-        {user?.id ? (
-          <Link
-            className="h3 m-2 p-3 bold shadow rounded"
-            to="/login"
-            onClick={() => logout()}
-          >
-            Log Out
-          </Link>
-        ) : (
-          <>
-            <Link
-              className={`h3 m-2 p-3 bold shadow rounded ${
-                path === "/login" && "active"
-              }`}
-              to="/login"
-            >
-              Log In
-            </Link>
-            <Link
-              className={`h3 m-2 p-3 bold shadow rounded ${
-                path === "/register" && "active"
-              }`}
-              to="/register"
-            >
-              Register
-            </Link>{" "}
-          </>
-        )}
-      </div>
-    </div>
+    <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand href="#/">Smart T-Rex</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          {user?.id ? (
+            <>
+              <Nav className="me-auto">
+                <Nav.Link className={path === "/" ? "active" : ""} href="#/">
+                  Recognize
+                </Nav.Link>
+                <Nav.Link
+                  className={path === "/recogtrie" ? "active" : ""}
+                  href="#/recogtrie"
+                >
+                  Recogtrie
+                </Nav.Link>
+              </Nav>
+              <Nav>
+                <Nav.Link href="#/login" onClick={() => logout()}>
+                  Log Out
+                </Nav.Link>
+              </Nav>
+            </>
+          ) : (
+            <Nav>
+              <Nav.Link
+                className={path === "/login" ? "active" : ""}
+                href="#/login"
+              >
+                Log In
+              </Nav.Link>
+              <Nav.Link
+                className={path === "/register" ? "active" : ""}
+                href="#/register"
+              >
+                Register
+              </Nav.Link>
+            </Nav>
+          )}
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 

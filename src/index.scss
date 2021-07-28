@@ -11,14 +11,6 @@ body {
   height: 100vh;
 }
 
-a {
-  color: #212529;
-  text-decoration: none;
-  &.active {
-    color: #2200ff;
-  }
-}
-
 .Tilt {
   background: #12c2e9;
   background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
