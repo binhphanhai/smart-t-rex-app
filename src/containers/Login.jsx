@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
-import {
-  Form,
-  Button,
-  Card,
-  Container,
-  Row,
-  Col,
-  Spinner,
-} from "react-bootstrap";
+import { Form, Button, Card, Container, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+
+import Spinner from "../components/core/Spinner";
 
 import { login } from "../utils/services";
 import { useSetUser } from "../utils/userProvider";
@@ -83,11 +77,7 @@ const Login = () => {
                     {errors.password ? errors.password.message : ""}
                   </small>
                 </Form.Group>
-                {isPending && (
-                  <div className="d-flex justify-content-center mb-3">
-                    <Spinner animation="border" variant="primary" />
-                  </div>
-                )}
+                {isPending && <Spinner />}
                 <Button className="w-100" variant="primary" type="submit">
                   Login
                 </Button>

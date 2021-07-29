@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Spinner, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Swal from "sweetalert2";
 
 import { useGetUser, useSetUser } from "../utils/userProvider";
 import { recognizeImage, addImage, increaseEntry } from "../utils/services";
 import { removeDuplicates } from "../utils/helpers";
 
+import Spinner from "../components/core/Spinner";
 import Info from "../components/Info";
 import InputZone from "../components/recognize/InputZone";
 import ImagesZone from "../components/recognize/ImagesZone";
@@ -92,11 +93,7 @@ const Recognize = () => {
     <Container>
       <Info />
       <InputZone setImgUrl={setImgUrl} />
-      {isPending && (
-        <div className="d-flex justify-content-center mt-2">
-          <Spinner animation="grow" variant="primary" />
-        </div>
-      )}
+      {isPending && <Spinner />}
       <ImagesZone imgUrl={imgUrl} celebrities={celebrities} />
     </Container>
   );

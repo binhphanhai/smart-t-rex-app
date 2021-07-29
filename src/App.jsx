@@ -1,13 +1,14 @@
 import React, { Suspense } from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
 import Particles from "react-tsparticles";
-import { Container, Spinner } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 import { particlesOptions } from "./utils/enum";
 import UserProvider from "./utils/userProvider";
 
 import PrivateRoute from "./components/core/PrivateRoute";
 import CommonRoute from "./components/core/CommonRoute";
+import Spinner from "./components/core/Spinner";
 
 import Logo from "./components/Logo";
 import Navigator from "./components/Navigation";
@@ -30,13 +31,7 @@ const App = () => {
             <Container>
               <Logo />
             </Container>
-            <Suspense
-              fallback={
-                <div className="d-flex justify-content-center">
-                  <Spinner animation="border" variant="primary" />
-                </div>
-              }
-            >
+            <Suspense fallback={<Spinner />}>
               <Switch>
                 <CommonRoute exact path="/register" component={Register} />
                 <CommonRoute exact path="/login" component={Login} />

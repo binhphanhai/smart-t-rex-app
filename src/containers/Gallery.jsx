@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useCallback } from "react";
 import Swal from "sweetalert2";
-import { Spinner, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
+import Spinner from "../components/core/Spinner";
 import Info from "../components/Info";
 import InputZone from "../components/gallery/InputZone";
 import ImagesGrid from "../components/gallery/ImagesGrid";
@@ -61,11 +62,7 @@ const Gallery = () => {
           isLoading={isLoadingCelebrities}
           setName={handleLoadImages}
         />
-        {isLoadingImageUrls && (
-          <div className="d-flex justify-content-center m-3">
-            <Spinner animation="border" variant="primary" />
-          </div>
-        )}
+        {isLoadingImageUrls && <Spinner />}
       </Container>
       <ImagesGrid imageUrls={imageUrls} />
     </>

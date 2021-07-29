@@ -1,8 +1,7 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 
 const ImagesZone = ({ imgUrl, celebrities }) => {
   const imageRef = useRef(null);
-  console.log("render imasdnput zone");
 
   return (
     <div className="d-flex justify-content-center">
