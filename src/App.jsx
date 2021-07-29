@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
 import Particles from "react-tsparticles";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 
 import { particlesOptions } from "./utils/enum";
 import UserProvider from "./utils/userProvider";
@@ -11,12 +11,13 @@ import CommonRoute from "./components/core/CommonRoute";
 
 import Logo from "./components/Logo";
 import Navigator from "./components/Navigation";
-import Recognize from "./containers/Recognize";
-import Gallery from "./containers/Gallery";
-import Ranking from "./containers/ranking";
-import Login from "./containers/Login";
-import Register from "./containers/Register";
-import NotFound from "./containers/NotFound";
+
+const Recognize = React.lazy(() => import("./containers/Recognize"));
+const Gallery = React.lazy(() => import("./containers/Gallery"));
+const Ranking = React.lazy(() => import("./containers/ranking"));
+const Login = React.lazy(() => import("./containers/Login"));
+const Register = React.lazy(() => import("./containers/Register"));
+const NotFound = React.lazy(() => import("./containers/NotFound"));
 
 const App = () => {
   return (
@@ -29,14 +30,22 @@ const App = () => {
             <Container>
               <Logo />
             </Container>
-            <Switch>
-              <CommonRoute exact path="/register" component={Register} />
-              <CommonRoute exact path="/login" component={Login} />
-              <PrivateRoute exact path="/" component={Recognize} />
-              <PrivateRoute exact path="/gallery" component={Gallery} />
-              <PrivateRoute exact path="/ranking" component={Ranking} />
-              <Route component={NotFound} />
-            </Switch>
+            <Suspense
+              fallback={
+                <div className="d-flex justify-content-center">
+                  <Spinner animation="border" variant="primary" />
+                </div>
+              }
+            >
+              <Switch>
+                <CommonRoute exact path="/register" component={Register} />
+                <CommonRoute exact path="/login" component={Login} />
+                <PrivateRoute exact path="/" component={Recognize} />
+                <PrivateRoute exact path="/gallery" component={Gallery} />
+                <PrivateRoute exact path="/ranking" component={Ranking} />
+                <Route component={NotFound} />
+              </Switch>
+            </Suspense>
           </div>
         </UserProvider>
       </HashRouter>
