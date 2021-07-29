@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { Container } from "react-bootstrap";
 import Swal from "sweetalert2";
 
@@ -9,7 +9,9 @@ import { removeDuplicates } from "../utils/helpers";
 import Spinner from "../components/core/Spinner";
 import Info from "../components/Info";
 import InputZone from "../components/recognize/InputZone";
-import ImagesZone from "../components/recognize/ImagesZone";
+const ImagesZone = React.lazy(() =>
+  import("../components/recognize/ImagesZone")
+);
 
 const Recognize = () => {
   const [imgUrl, setImgUrl] = useState("");
@@ -71,7 +73,7 @@ const Recognize = () => {
           else
             Swal.fire({
               icon: "info",
-              title: "Pridiction is too low",
+              title: "Unknown celebrity",
               text: "I will not add this image to gallery",
             });
           handleIncreaseEntry();
@@ -94,7 +96,11 @@ const Recognize = () => {
       <Info />
       <InputZone setImgUrl={setImgUrl} />
       {isPending && <Spinner />}
-      <ImagesZone imgUrl={imgUrl} celebrities={celebrities} />
+      {imgUrl.length > 0 && (
+        <Suspense fallback={<Spinner />}>
+          <ImagesZone imgUrl={imgUrl} celebrities={celebrities} />
+        </Suspense>
+      )}
     </Container>
   );
 };
