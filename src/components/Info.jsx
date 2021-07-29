@@ -5,10 +5,10 @@ const Info = () => {
   const user = useGetUser();
   return (
     <div>
-      <div className="text-white text-center h3">
+      <div className="text-primary text-center h3">
         {`Hi ${user.name}, your current entry count is...`}
       </div>
-      <div className="text-white text-center h1">{user.entries}</div>
+      <div className="text-primary text-center h1">{user.entries}</div>
     </div>
   );
 };

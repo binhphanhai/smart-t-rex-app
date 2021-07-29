@@ -3,8 +3,8 @@ body {
   padding: 0;
   height: 100vh;
   font-family: "Courier New", Courier, monospace;
-  background: #12c2e9;
-  background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+  background: #aaa;
+  background: linear-gradient(to right, #aaa, #ccc, #aaa);
 }
 
 #root {
@@ -17,7 +17,7 @@ body {
 }
 
 .navbar {
-  opacity: 0.95;
+  opacity: 0.85;
 }
 
 .main-container {

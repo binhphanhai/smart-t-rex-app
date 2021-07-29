@@ -38,7 +38,7 @@ const InputZone = ({ celebrities, setName, isLoading }) => {
           I am Smart T-Rex, please select recognized celebrity,
         </p>
         <p className="h3 text-center bold">
-          I will show all submitted images containing that celebrity
+          I will show all submitted images about that celebrity
         </p>
         <div className="d-flex justify-content-center">
           <div className="input-form input-gallery rounded shadow row justify-content-center">
