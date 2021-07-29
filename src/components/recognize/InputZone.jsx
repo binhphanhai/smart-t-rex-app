@@ -4,6 +4,7 @@ import { MAX_SUPPORTED_IMAGE_URL_LENGTH } from "../../utils/enum";
 
 const InputZone = ({ setImgUrl }) => {
   const [inputValue, setInputValue] = useState("");
+  console.log("render input zone");
 
   const handleSubmitImage = () => {
     if (inputValue.length > MAX_SUPPORTED_IMAGE_URL_LENGTH) {
@@ -55,4 +56,4 @@ const InputZone = ({ setImgUrl }) => {
   );
 };
 
-export default InputZone;
+export default React.memo(InputZone);

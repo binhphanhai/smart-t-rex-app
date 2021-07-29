@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 
 const ImagesZone = ({ imgUrl, celebrities }) => {
   const imageRef = useRef(null);
+  console.log("render imasdnput zone");
 
   return (
     <div className="d-flex justify-content-center">
@@ -46,4 +47,4 @@ const ImagesZone = ({ imgUrl, celebrities }) => {
   );
 };
 
-export default ImagesZone;
+export default React.memo(ImagesZone);
