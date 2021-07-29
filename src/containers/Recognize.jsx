@@ -7,7 +7,7 @@ import { recognizeImage, addImage, increaseEntry } from "../utils/services";
 import { removeDuplicates } from "../utils/helpers";
 
 import Spinner from "../components/core/Spinner";
-import Info from "../components/Info";
+import Info from "../components/core/Info";
 import InputZone from "../components/recognize/InputZone";
 const ImagesZone = React.lazy(() =>
   import("../components/recognize/ImagesZone")

@@ -3,8 +3,8 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-import { useLogOut } from "../utils/userProvider";
-import { useGetUser } from "../utils/userProvider";
+import { useLogOut } from "../../utils/userProvider";
+import { useGetUser } from "../../utils/userProvider";
 
 const Navigation = () => {
   const path = useLocation().pathname;

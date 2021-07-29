@@ -10,8 +10,8 @@ import PrivateRoute from "./components/core/PrivateRoute";
 import CommonRoute from "./components/core/CommonRoute";
 import Spinner from "./components/core/Spinner";
 
-import Logo from "./components/Logo";
-import Navigator from "./components/Navigation";
+import Logo from "./components/core/Logo";
+import Navigator from "./components/core/Navigation";
 
 const Recognize = React.lazy(() => import("./containers/Recognize"));
 const Gallery = React.lazy(() => import("./containers/Gallery"));

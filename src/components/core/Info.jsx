@@ -1,5 +1,5 @@
 import React from "react";
-import { useGetUser } from "../utils/userProvider";
+import { useGetUser } from "../../utils/userProvider";
 
 const Info = () => {
   const user = useGetUser();

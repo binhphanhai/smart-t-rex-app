@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import { Container } from "react-bootstrap";
 
 import Spinner from "../components/core/Spinner";
-import Info from "../components/Info";
+import Info from "../components/core/Info";
 import InputZone from "../components/gallery/InputZone";
 const ImagesGrid = React.lazy(() => import("../components/gallery/ImagesGrid"));
 
