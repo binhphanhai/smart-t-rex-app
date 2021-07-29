@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, Suspense } from "react";
 import Swal from "sweetalert2";
 import { Container } from "react-bootstrap";
 
 import Spinner from "../components/core/Spinner";
 import Info from "../components/Info";
 import InputZone from "../components/gallery/InputZone";
-import ImagesGrid from "../components/gallery/ImagesGrid";
+const ImagesGrid = React.lazy(() => import("../components/gallery/ImagesGrid"));
 
 import { getAllCelebrities, loadImagesByCelebrity } from "../utils/services";
 
@@ -64,7 +64,11 @@ const Gallery = () => {
         />
         {isLoadingImageUrls && <Spinner />}
       </Container>
-      <ImagesGrid imageUrls={imageUrls} />
+      {imageUrls.length > 0 && (
+        <Suspense fallback={<Spinner />}>
+          <ImagesGrid imageUrls={imageUrls} />
+        </Suspense>
+      )}
     </>
   );
 };
