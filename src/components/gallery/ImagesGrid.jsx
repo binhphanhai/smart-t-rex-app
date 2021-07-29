@@ -23,4 +23,4 @@ const ImagesGrid = ({ imageUrls }) => {
   );
 };
 
-export default ImagesGrid;
+export default React.memo(ImagesGrid);

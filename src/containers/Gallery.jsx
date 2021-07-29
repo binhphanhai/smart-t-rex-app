@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Swal from "sweetalert2";
 import { Spinner, Container } from "react-bootstrap";
 
@@ -14,7 +14,7 @@ const Gallery = () => {
   const [imageUrls, setImageUrls] = useState([]);
   const [isLoadingImageUrls, setIsLoadingImageUrls] = useState(false);
 
-  const handleLoadImages = (name) => {
+  const handleLoadImages = useCallback((name) => {
     setIsLoadingImageUrls(true);
     loadImagesByCelebrity(name)
       .then((res) => {
@@ -31,7 +31,7 @@ const Gallery = () => {
             : "Something went wrong!",
         });
       });
-  };
+  }, []);
 
   useEffect(() => {
     setIsLoadingCelebrities(true);

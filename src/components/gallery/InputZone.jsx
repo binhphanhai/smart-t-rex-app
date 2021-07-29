@@ -63,4 +63,4 @@ const InputZone = ({ celebrities, setName, isLoading }) => {
   );
 };
 
-export default InputZone;
+export default React.memo(InputZone);
