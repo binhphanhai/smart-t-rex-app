@@ -1,3 +1,5 @@
+import { STATUS } from "./enum";
+
 export const capitalizeString = (str) =>
   str
     .split(" ")
@@ -14,4 +16,25 @@ export const removeDuplicates = (arr) => {
     }
   });
   return rs;
+};
+
+export const createResource = (promise) => {
+  let status = STATUS.PENDING;
+  let result = promise
+    .then((res) => {
+      status = STATUS.SUCCESS;
+      result = res.data;
+    })
+    .catch((err) => {
+      status = STATUS.ERROR;
+      result = err.response?.data;
+    });
+  return {
+    read() {
+      if (status === STATUS.PENDING) throw result;
+      if (status === STATUS.ERROR) throw result;
+      if (status === STATUS.SUCCESS) return result;
+      throw new Error("This should be impossible");
+    },
+  };
 };

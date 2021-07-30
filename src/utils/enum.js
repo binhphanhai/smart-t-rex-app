@@ -2,6 +2,12 @@ export const MAX_SUPPORTED_IMAGE_URL_LENGTH = 500;
 
 export const MAX_ITEMS_PER_PAGE = 10;
 
+export const STATUS = {
+  PENDING: 1,
+  SUCCESS: 2,
+  ERROR: 3,
+};
+
 export const particlesOptions = {
   fpsLimit: 60,
   particles: {
