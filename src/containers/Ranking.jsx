@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Container, Table, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
-import Spinner from "../components/core/Spinner";
 import { getImageCountByCelebrity } from "../utils/services";
 import { MAX_ITEMS_PER_PAGE } from "../utils/enum";
+
+import Spinner from "../components/core/Spinner";
+import Table from "../components/ranking/Table";
+import Pagination from "../components/ranking/Pagination";
 
 const Ranking = () => {
   const [celebrities, setCelebrities] = useState([]);
@@ -45,24 +48,7 @@ const Ranking = () => {
         <Spinner />
       ) : (
         <Row>
-          <Table className="ranking-table" striped bordered hover>
-            <thead>
-              <tr>
-                <th className="text-center col-2">RANK</th>
-                <th className="text-center col-5">NAME</th>
-                <th className="text-center col-5">RECOGNIZED IMAGES</th>
-              </tr>
-            </thead>
-            <tbody>
-              {showedCelebrities.map((celebrity) => (
-                <tr key={celebrity.id}>
-                  <td className="text-center">{celebrity.id}</td>
-                  <td>{celebrity.celebrity}</td>
-                  <td className="text-center">{celebrity.count}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+          <Table celebrities={showedCelebrities} />
           <br />
           <Pagination
             currentPage={currentPage}
@@ -72,53 +58,6 @@ const Ranking = () => {
         </Row>
       )}
     </Container>
-  );
-};
-
-const Pagination = ({ currentPage, setCurrentPage, totalItem }) => {
-  const totalPage = Math.ceil(totalItem / MAX_ITEMS_PER_PAGE);
-  return (
-    <ul className="pagination d-flex justify-content-end">
-      {totalPage > 1 && (
-        <PaginationItem setPage={() => setCurrentPage(1)}>
-          &laquo;
-        </PaginationItem>
-      )}
-      {currentPage > 2 && currentPage === totalPage && (
-        <PaginationItem setPage={() => setCurrentPage(currentPage - 2)}>
-          {currentPage - 2}
-        </PaginationItem>
-      )}
-      {currentPage > 1 && (
-        <PaginationItem setPage={() => setCurrentPage(currentPage - 1)}>
-          {currentPage - 1}
-        </PaginationItem>
-      )}
-      {totalPage > 0 && <PaginationItem active>{currentPage}</PaginationItem>}
-      {currentPage < totalPage && (
-        <PaginationItem setPage={() => setCurrentPage(currentPage + 1)}>
-          {currentPage + 1}
-        </PaginationItem>
-      )}
-      {currentPage < totalPage - 1 && currentPage === 1 && (
-        <PaginationItem setPage={() => setCurrentPage(currentPage + 2)}>
-          {currentPage + 2}
-        </PaginationItem>
-      )}
-      {totalPage > 1 && (
-        <PaginationItem setPage={() => setCurrentPage(totalPage)}>
-          &raquo;
-        </PaginationItem>
-      )}
-    </ul>
-  );
-};
-
-const PaginationItem = ({ active = false, setPage, children }) => {
-  return (
-    <li className={`page-item ${active && "active"}`} onClick={setPage}>
-      <span className="page-link">{children}</span>
-    </li>
   );
 };
 
