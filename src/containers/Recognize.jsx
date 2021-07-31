@@ -15,55 +15,51 @@ const ImagesZone = React.lazy(() =>
 
 const Recognize = () => {
   const [imgUrl, setImgUrl] = useState("");
-  const [isPending, setIsPending] = useState(false);
+  const [pendingCount, setPendingCount] = useState(false);
   const [celebrities, setCelebrities] = useState([]);
   const user = useGetUser();
   const setUser = useSetUser();
 
+  const fireError = (title = "Failed on fetching API", message) => {
+    Swal.fire({
+      icon: "error",
+      title: title,
+      text: message || "Something went wrong!",
+    });
+  };
+
   const handleAddImage = (celebs) => {
-    setIsPending(true);
+    setPendingCount((state) => state + 1);
     addImage(imgUrl, celebs)
       .then((res) => {
-        setIsPending(false);
+        setPendingCount((state) => state - 1);
       })
       .catch((err) => {
-        setIsPending(false);
-        Swal.fire({
-          icon: "error",
-          title: "Add Image failed",
-          text: err.response?.data.message
-            ? err.response.data.message
-            : "Something went wrong!",
-        });
+        setPendingCount((state) => state - 1);
+        fireError("Add Image failed", err.response?.data.message);
       });
   };
 
   const handleIncreaseEntry = () => {
-    setIsPending(true);
+    setPendingCount((state) => state + 1);
     increaseEntry(user.id)
       .then((res) => {
-        setIsPending(false);
+        setPendingCount((state) => state - 1);
         setUser({ ...user, entries: res.data });
       })
       .catch((err) => {
-        setIsPending(false);
-        Swal.fire({
-          icon: "error",
-          title: "Increase entry failed",
-          text: err.response?.data.message
-            ? err.response.data.message
-            : "Something went wrong!",
-        });
+        setPendingCount((state) => state - 1);
+        fireError("Increase entry failed", err.response?.data.message);
       });
   };
 
   useEffect(() => {
     if (imgUrl) {
-      setIsPending(true);
+      setPendingCount((state) => state + 1);
       setCelebrities([]);
       recognizeImage(imgUrl)
         .then((res) => {
-          setIsPending(false);
+          setPendingCount((state) => state - 1);
           setCelebrities(res.data);
           const celebNames = res.data
             .filter((celeb) => celeb.prediction > 0.1)
@@ -79,14 +75,8 @@ const Recognize = () => {
           handleIncreaseEntry();
         })
         .catch((err) => {
-          setIsPending(false);
-          Swal.fire({
-            icon: "error",
-            title: "Recognize failed",
-            text: err.response?.data.message
-              ? err.response.data.message
-              : "Something went wrong!",
-          });
+          setPendingCount((state) => state - 1);
+          fireError("Recognize failed", err.response?.data.message);
         });
     }
   }, [imgUrl]);
@@ -95,7 +85,7 @@ const Recognize = () => {
     <Container>
       <Info />
       <InputZone setImgUrl={setImgUrl} />
-      {isPending && <Spinner />}
+      {pendingCount && <Spinner />}
       {imgUrl.length > 0 && (
         <Suspense fallback={<Spinner />}>
           <ImagesZone imgUrl={imgUrl} celebrities={celebrities} />
