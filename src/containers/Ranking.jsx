@@ -15,12 +15,10 @@ const Ranking = () => {
 
   return (
     <>
-      {pokemonResource ? (
+      {pokemonResource && (
         <Suspense fallback={<Spinner />} name="Ranking">
           <RankingComp resource={pokemonResource} />
         </Suspense>
-      ) : (
-        ""
       )}
     </>
   );
