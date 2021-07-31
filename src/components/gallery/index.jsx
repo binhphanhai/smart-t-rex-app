@@ -1,9 +1,11 @@
 import React, { useState, useCallback, Suspense } from "react";
 import { Container } from "react-bootstrap";
+import { ErrorBoundary } from "react-error-boundary";
 
 import Spinner from "../core/Spinner";
 import Info from "../core/Info";
 import InputZone from "./InputZone";
+import ErrorFallback from "../core/ErrorFallback";
 const ImagesGrid = React.lazy(() => import("./ImagesGrid"));
 
 import { loadImagesByCelebrity } from "../../utils/services";
@@ -24,9 +26,11 @@ const Gallery = ({ resource }) => {
         <InputZone celebrities={celebrities} setName={handleLoadImages} />
       </Container>
       {imageUrlsResource && (
-        <Suspense fallback={<Spinner />}>
-          <ImagesGrid resource={imageUrlsResource} />
-        </Suspense>
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <Suspense fallback={<Spinner />}>
+            <ImagesGrid resource={imageUrlsResource} />
+          </Suspense>
+        </ErrorBoundary>
       )}
     </>
   );
