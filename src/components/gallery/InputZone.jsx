@@ -4,7 +4,7 @@ import Select from "react-select";
 
 import { capitalizeString } from "../../utils/helpers";
 
-const InputZone = ({ celebrities, setName, isLoading }) => {
+const InputZone = ({ celebrities, setName }) => {
   const [options, setOptions] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -48,7 +48,6 @@ const InputZone = ({ celebrities, setName, isLoading }) => {
               onChange={handleChange}
               options={options}
               placeholder="Choose recognized celebrity"
-              isLoading={isLoading}
             />
             <button
               className="col-6 col-md-3 h3 btn btn-info mt-2"
