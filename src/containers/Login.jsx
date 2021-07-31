@@ -32,8 +32,8 @@ const Login = () => {
         Swal.fire({
           icon: "error",
           title: "Login failed",
-          text: err.response?.data.detail
-            ? err.response.data.detail
+          text: err.response?.data.message
+            ? err.response.data.message
             : "Something went wrong!",
         });
       });

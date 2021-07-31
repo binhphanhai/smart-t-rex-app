@@ -32,8 +32,8 @@ const Register = () => {
         Swal.fire({
           icon: "error",
           title: "Register failed",
-          text: err.response?.data.detail
-            ? err.response.data.detail
+          text: err.response?.data.message
+            ? err.response.data.message
             : "Something went wrong!",
         });
       });

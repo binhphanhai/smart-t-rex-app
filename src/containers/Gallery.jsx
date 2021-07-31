@@ -27,8 +27,8 @@ const Gallery = () => {
         Swal.fire({
           icon: "error",
           title: "Load images failed",
-          text: err.response?.data.detail
-            ? err.response.data.detail
+          text: err.response?.data.message
+            ? err.response.data.message
             : "Something went wrong!",
         });
       });
@@ -46,8 +46,8 @@ const Gallery = () => {
         Swal.fire({
           icon: "error",
           title: "Load celebrities failed",
-          text: err.response?.data.detail
-            ? err.response.data.detail
+          text: err.response?.data.message
+            ? err.response.data.message
             : "Something went wrong!",
         });
       });

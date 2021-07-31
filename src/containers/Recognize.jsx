@@ -31,8 +31,8 @@ const Recognize = () => {
         Swal.fire({
           icon: "error",
           title: "Add Image failed",
-          text: err.response?.data.detail
-            ? err.response.data.detail
+          text: err.response?.data.message
+            ? err.response.data.message
             : "Something went wrong!",
         });
       });
@@ -50,8 +50,8 @@ const Recognize = () => {
         Swal.fire({
           icon: "error",
           title: "Increase entry failed",
-          text: err.response?.data.detail
-            ? err.response.data.detail
+          text: err.response?.data.message
+            ? err.response.data.message
             : "Something went wrong!",
         });
       });
@@ -83,8 +83,8 @@ const Recognize = () => {
           Swal.fire({
             icon: "error",
             title: "Recognize failed",
-            text: err.response?.data.detail
-              ? err.response.data.detail
+            text: err.response?.data.message
+              ? err.response.data.message
               : "Something went wrong!",
           });
         });

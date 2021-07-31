@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
 import Particles from "react-tsparticles";
 import { Container } from "react-bootstrap";
+import { ErrorBoundary } from "react-error-boundary";
 
 import { particlesOptions } from "./utils/enum";
 import UserProvider from "./utils/userProvider";
@@ -12,6 +13,7 @@ import Spinner from "./components/core/Spinner";
 
 import Logo from "./components/core/Logo";
 import Navigator from "./components/core/Navigation";
+import ErrorFallback from "./components/core/ErrorFallback";
 
 const Recognize = React.lazy(() => import("./containers/Recognize"));
 const Gallery = React.lazy(() => import("./containers/Gallery"));
@@ -31,16 +33,18 @@ const App = () => {
             <Container>
               <Logo />
             </Container>
-            <Suspense fallback={<Spinner />}>
-              <Switch>
-                <CommonRoute exact path="/register" component={Register} />
-                <CommonRoute exact path="/login" component={Login} />
-                <PrivateRoute exact path="/" component={Recognize} />
-                <PrivateRoute exact path="/gallery" component={Gallery} />
-                <PrivateRoute exact path="/ranking" component={Ranking} />
-                <Route component={NotFound} />
-              </Switch>
-            </Suspense>
+            <ErrorBoundary FallbackComponent={ErrorFallback}>
+              <Suspense fallback={<Spinner />}>
+                <Switch>
+                  <CommonRoute exact path="/register" component={Register} />
+                  <CommonRoute exact path="/login" component={Login} />
+                  <PrivateRoute exact path="/" component={Recognize} />
+                  <PrivateRoute exact path="/gallery" component={Gallery} />
+                  <PrivateRoute exact path="/ranking" component={Ranking} />
+                  <Route component={NotFound} />
+                </Switch>
+              </Suspense>
+            </ErrorBoundary>
           </div>
         </UserProvider>
       </HashRouter>
