@@ -1,7 +1,8 @@
 import React from "react";
 import Masonry from "react-masonry-css";
 
-const ImagesGrid = ({ imageUrls }) => {
+const ImagesGrid = ({ resource }) => {
+  const imageUrls = resource.read();
   return (
     <Masonry
       breakpointCols={{

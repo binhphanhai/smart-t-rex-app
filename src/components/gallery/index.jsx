@@ -1,5 +1,4 @@
 import React, { useState, useCallback, Suspense } from "react";
-import Swal from "sweetalert2";
 import { Container } from "react-bootstrap";
 
 import Spinner from "../core/Spinner";
@@ -8,29 +7,14 @@ import InputZone from "./InputZone";
 const ImagesGrid = React.lazy(() => import("./ImagesGrid"));
 
 import { loadImagesByCelebrity } from "../../utils/services";
+import { createResource } from "../../utils/helpers";
 
 const Gallery = ({ resource }) => {
   const celebrities = resource.read();
-  const [imageUrls, setImageUrls] = useState([]);
-  const [isLoadingImageUrls, setIsLoadingImageUrls] = useState(false);
+  const [imageUrlsResource, setImageUrlsResource] = useState(null);
 
   const handleLoadImages = useCallback((name) => {
-    setIsLoadingImageUrls(true);
-    loadImagesByCelebrity(name)
-      .then((res) => {
-        setIsLoadingImageUrls(false);
-        setImageUrls(res.data);
-      })
-      .catch((err) => {
-        setIsLoadingImageUrls(false);
-        Swal.fire({
-          icon: "error",
-          title: "Load images failed",
-          text: err.response?.data.message
-            ? err.response.data.message
-            : "Something went wrong!",
-        });
-      });
+    setImageUrlsResource(createResource(loadImagesByCelebrity(name)));
   }, []);
 
   return (
@@ -38,11 +22,10 @@ const Gallery = ({ resource }) => {
       <Container>
         <Info />
         <InputZone celebrities={celebrities} setName={handleLoadImages} />
-        {isLoadingImageUrls && <Spinner />}
       </Container>
-      {imageUrls.length > 0 && (
+      {imageUrlsResource && (
         <Suspense fallback={<Spinner />}>
-          <ImagesGrid imageUrls={imageUrls} />
+          <ImagesGrid resource={imageUrlsResource} />
         </Suspense>
       )}
     </>
