@@ -1,9 +1,12 @@
 {
   "name": "smart-t-rex-app",
+  "homepage": "https://[GITHUB_USERNAME].github.io/smart-t-rex-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "start": "webpack serve --mode development --hot",
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,7 +21,6 @@
   "bugs": {
     "url": "https://github.com/binhphanhai/smart-t-rex-app/issues"
   },
-  "homepage": "https://github.com/binhphanhai/smart-t-rex-app#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
@@ -41,6 +43,7 @@
     "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
     "file-loader": "^6.2.0",
+    "gh-pages": "^3.2.3",
     "html-webpack-plugin": "^5.3.2",
     "mini-css-extract-plugin": "^2.1.0",
     "sass": "^1.36.0",
