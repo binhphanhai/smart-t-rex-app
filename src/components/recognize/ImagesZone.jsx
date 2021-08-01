@@ -1,7 +1,12 @@
-import React, { useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const ImagesZone = ({ imgUrl, celebrities }) => {
   const imageRef = useRef(null);
+  const [isLoadingImage, setIsLoadingImage] = useState(false);
+
+  useEffect(() => {
+    setIsLoadingImage(true);
+  }, [imgUrl]);
 
   return (
     <div className="d-flex justify-content-center">
@@ -13,8 +18,10 @@ const ImagesZone = ({ imgUrl, celebrities }) => {
           src={imgUrl}
           width="600px"
           heigh="auto"
+          onLoad={() => setIsLoadingImage(false)}
         />
         {imageRef.current !== null &&
+          !isLoadingImage &&
           celebrities.length > 0 &&
           celebrities.map((celeb) => (
             <div
