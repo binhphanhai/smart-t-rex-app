@@ -56,6 +56,10 @@ const Register = () => {
                         value: /\S+@\S+\.\S+/,
                         message: "Email is invalid",
                       },
+                      maxLength: {
+                        value: 100,
+                        message: "Your email is too long",
+                      },
                     })}
                     type="text"
                     placeholder="Enter email"
@@ -69,6 +73,10 @@ const Register = () => {
                   <Form.Control
                     {...register("name", {
                       required: "Input name to continue",
+                      maxLength: {
+                        value: 100,
+                        message: "Your name is too long",
+                      },
                     })}
                     type="text"
                     placeholder="Enter name"
@@ -86,6 +94,10 @@ const Register = () => {
                       minLength: {
                         value: 8,
                         message: "Password must be at least 8 characters",
+                      },
+                      maxLength: {
+                        value: 100,
+                        message: "Your password is too long",
                       },
                     })}
                     type="password"

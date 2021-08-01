@@ -45,6 +45,10 @@ body {
   background: rgba(2, 2, 31, 0.07);
 }
 
+.welcome-message {
+  word-wrap: break-word;
+}
+
 .text_error {
   line-height: 1rem;
   font-size: 0.85rem;
