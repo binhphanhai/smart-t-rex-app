@@ -85,7 +85,7 @@ const Recognize = () => {
     <Container>
       <Info />
       <InputZone setImgUrl={setImgUrl} />
-      {pendingCount && <Spinner />}
+      {pendingCount > 0 && <Spinner />}
       {imgUrl.length > 0 && (
         <Suspense fallback={<Spinner />}>
           <ImagesZone imgUrl={imgUrl} celebrities={celebrities} />
